@@ -30,10 +30,13 @@ last_updated = data.get("last_updated", "Unknown")
 #create a list for problematic devices
 
 offline = []
-
 warning = []
-
 low_uptime = []
+
+# counter 
+
+device_type_counts = {}
+offline_type_counts = {}
 
 # loop through the location list
 for location in data["locations"]:
@@ -44,23 +47,25 @@ for location in data["locations"]:
     for device in location["devices"]:
         report += format_row(device["hostname"], device["vendor"], f"{device['uptime_days']} days")
 
-
         # collect problematic devices while looping
         
         if device["status"].lower() == "offline":
-         
             offline.append(device)
+            offline_type_counts[device["type"]] = offline_type_counts.get(device["type"], 0) + 1
+        
         elif device["status"].lower() == "warning":
-         
             warning.append(device)
         if device["uptime_days"] < 30:
-
             low_uptime.append(device)
+
+        dtype = device.get("type", "Unknown")
+
+        device_type_counts[dtype] = device_type_counts.get(dtype, 0) + 1
 
 # create an empty summary
 summary = ""
 
-# add company name, timestamp and summary
+# company name, timestamp and summary
 
 summary += "="*80 + "\n"
 summary +=  f"NETWORK REPORT - {company}\n"
@@ -78,7 +83,7 @@ summary += f"⚠ Warning devices: {len(warning)}\n"
 
 summary += f"⚠ Low uptime (<30 days): {len(low_uptime)}\n\n"
 
-# add detailed sections for problematic devices
+# detailed sections for problematic devices
 
 if offline:
     summary += "="*80 + "\n"
@@ -104,11 +109,27 @@ if low_uptime:
         summary += format_row(d["hostname"], d["vendor"], f"{d['uptime_days']} days")
     summary += "\n"
 
+# statistics per device type
+
+summary += "="*80 + "\n"
+summary += "STATISTICS PER DEVICE TYPE\n"
+summary += "="*80 + "\n"
+total_devices = sum(device_type_counts.values())
+total_offline = sum(offline_type_counts.values())
+
+for dtype, count in device_type_counts.items():
+    offline_count = offline_type_counts.get(dtype, 0)
+
+    summary += f"{dtype.capitalize():15} {count:3} st {offline_count} (offline)\n"
+
+summary += "-"*40 + "\n"
+summary += f"TOTAL: {total_devices} devices ({total_offline} offline = {total_offline/total_devices*100:.1f}% offline)\n\n"
+
 # somewhere later in our report add something to summary
 summary += "\n"
 summary += "This is our basic report:\n"
 
-# add summary before main report
+# summary before main report
 
 report = summary + report
 

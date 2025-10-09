@@ -1,7 +1,7 @@
 ================================================================================
 NETWORK REPORT - TechCorp AB
 ================================================================================
-Report generated: 2025-10-09 12:07
+Report generated: 2025-10-09 14:31
 Data last updated: 2024-09-30T10:30:00
 
 EXECUTIVE SUMMARY
@@ -35,6 +35,17 @@ LOW UPTIME DEVICES (<30 days)
  AP-LAGER-02        Ubiquiti               0 days
  SW-MAL-ACC-02      Juniper                8 days
  SW-DC-TOR-02       Arista                 5 days
+
+================================================================================
+STATISTICS PER DEVICE TYPE
+================================================================================
+Switch           18 st 1 (offline)
+Router            6 st 0 (offline)
+Access_point      9 st 1 (offline)
+Firewall          5 st 0 (offline)
+Load_balancer     2 st 0 (offline)
+----------------------------------------
+TOTAL: 40 devices (2 offline = 5.0% offline)
 
 
 This is our basic report:
