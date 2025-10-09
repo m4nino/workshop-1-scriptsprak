@@ -10,6 +10,17 @@ data = json.load(open("network_devices.json","r",encoding = "utf-8"))
 # create a variable that holds our whole text report
 report = ""
 
+# helper function for consistent table rows
+
+def format_row(hostname, vendor, value):
+    return (
+        " "
+        + hostname.ljust(19)
+        + vendor.ljust(19)
+        + str(value).rjust(10)
+        + "\n"
+    )
+
 # get company name and last update from JSON
 
 company = data.get("company", "Unknown Company")
@@ -31,12 +42,9 @@ for location in data["locations"]:
     # add a list of the host names of the devices 
     # on the location to the report
     for device in location["devices"]:
-        report += (" " 
-                 + device["hostname"].ljust(19,' ') + ' '
-                 + device["vendor"].ljust(19) + ' '
-                 + str(device["uptime_days"]).rjust(4)
-                 + "\n"
-                 )
+        report += format_row(device["hostname"], device["vendor"], f"{device['uptime_days']} days")
+
+
         # collect problematic devices while looping
         
         if device["status"].lower() == "offline":
@@ -55,28 +63,53 @@ summary = ""
 # add company name, timestamp and summary
 
 summary += "="*80 + "\n"
-
 summary +=  f"NETWORK REPORT - {company}\n"
-
 summary += "="*80 + "\n"
 
-summary += f"Report generated: {datetime.now().strftime('%y-%m-%d %H:%M')}\n"
+summary += f"Report generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
 
 summary += f"Data last updated: {last_updated}\n\n"
 
 summary +="EXECUTIVE SUMMARY\n"
-summary +="-----------------\n"
+summary +="==================\n"
 summary += f"⚠ Offline devices: {len(offline)}\n"
 
 summary += f"⚠ Warning devices: {len(warning)}\n"
 
 summary += f"⚠ Low uptime (<30 days): {len(low_uptime)}\n\n"
 
+# add detailed sections for problematic devices
+
+if offline:
+    summary += "="*80 + "\n"
+    summary += "OFFLINE DEVICES\n"
+    summary += "="*80 + "\n"
+    for d in offline:
+        summary += format_row(d["hostname"], d["vendor"], "OFFLINE")
+    summary += "\n"
+
+if warning:
+    summary += "="*80 + "\n"
+    summary += "WARNING DEVICES\n"
+    summary += "="*80 + "\n"
+    for d in warning:
+        summary += format_row(d["hostname"], d["vendor"], "WARNING")
+    summary += "\n"
+
+if low_uptime:
+    summary += "="*80 + "\n"
+    summary += "LOW UPTIME DEVICES (<30 days)\n"
+    summary += "="*80 + "\n"
+    for d in low_uptime:
+        summary += format_row(d["hostname"], d["vendor"], f"{d['uptime_days']} days")
+    summary += "\n"
+
 # somewhere later in our report add something to summary
-summary += "summary:\n"
+summary += "\n"
 summary += "This is our basic report:\n"
 
 # add summary before main report
+
 report = summary + report
 
 # write the report to text file

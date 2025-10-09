@@ -1,64 +1,90 @@
 ================================================================================
 NETWORK REPORT - TechCorp AB
 ================================================================================
-Report generated: 25-10-08 15:38
+Report generated: 2025-10-09 12:07
 Data last updated: 2024-09-30T10:30:00
 
 EXECUTIVE SUMMARY
------------------
+==================
 ⚠ Offline devices: 2
 ⚠ Warning devices: 3
 ⚠ Low uptime (<30 days): 9
 
-summary:
+================================================================================
+OFFLINE DEVICES
+================================================================================
+ SW-ACCESS-03       HP                    OFFLINE
+ AP-LAGER-02        Ubiquiti              OFFLINE
+
+================================================================================
+WARNING DEVICES
+================================================================================
+ AP-FLOOR2-02       Ubiquiti              WARNING
+ RT-LAGER-01        Cisco                 WARNING
+ SW-DC-TOR-02       Arista                WARNING
+
+================================================================================
+LOW UPTIME DEVICES (<30 days)
+================================================================================
+ SW-ACCESS-03       HP                     0 days
+ SW-ACCESS-05       HP                    15 days
+ AP-FLOOR2-01       Ubiquiti              12 days
+ AP-FLOOR2-02       Ubiquiti               2 days
+ SW-LAGER-02        Cisco                 23 days
+ RT-LAGER-01        Cisco                  2 days
+ AP-LAGER-02        Ubiquiti               0 days
+ SW-MAL-ACC-02      Juniper                8 days
+ SW-DC-TOR-02       Arista                 5 days
+
+
 This is our basic report:
 
 Huvudkontor
- SW-CORE-01          Cisco                145
- SW-CORE-02          Cisco                145
- SW-DIST-01          Cisco                 89
- SW-DIST-02          Cisco                 89
- SW-ACCESS-03        HP                     0
- SW-ACCESS-04        HP                   234
- SW-ACCESS-05        HP                    15
- RT-EDGE-01          Fortinet             234
- RT-EDGE-02          Fortinet             234
- AP-FLOOR1-01        Ubiquiti              67
- AP-FLOOR1-02        Ubiquiti              67
- AP-FLOOR2-01        Ubiquiti              12
- AP-FLOOR2-02        Ubiquiti               2
- AP-FLOOR3-01        Cisco                156
- FW-DMZ-01           Palo Alto             89
+ SW-CORE-01         Cisco                145 days
+ SW-CORE-02         Cisco                145 days
+ SW-DIST-01         Cisco                 89 days
+ SW-DIST-02         Cisco                 89 days
+ SW-ACCESS-03       HP                     0 days
+ SW-ACCESS-04       HP                   234 days
+ SW-ACCESS-05       HP                    15 days
+ RT-EDGE-01         Fortinet             234 days
+ RT-EDGE-02         Fortinet             234 days
+ AP-FLOOR1-01       Ubiquiti              67 days
+ AP-FLOOR1-02       Ubiquiti              67 days
+ AP-FLOOR2-01       Ubiquiti              12 days
+ AP-FLOOR2-02       Ubiquiti               2 days
+ AP-FLOOR3-01       Cisco                156 days
+ FW-DMZ-01          Palo Alto             89 days
 
 Lager
- SW-LAGER-01         Cisco                456
- SW-LAGER-02         Cisco                 23
- RT-LAGER-01         Cisco                  2
- AP-LAGER-01         Ubiquiti              67
- AP-LAGER-02         Ubiquiti               0
+ SW-LAGER-01        Cisco                456 days
+ SW-LAGER-02        Cisco                 23 days
+ RT-LAGER-01        Cisco                  2 days
+ AP-LAGER-01        Ubiquiti              67 days
+ AP-LAGER-02        Ubiquiti               0 days
 
 Kontor Malmö
- SW-MAL-CORE-01      Juniper              367
- SW-MAL-ACC-01       Juniper               45
- SW-MAL-ACC-02       Juniper                8
- RT-MAL-01           Mikrotik             178
- AP-MAL-01           Aruba                 90
- AP-MAL-02           Aruba                 90
- FW-MAL-01           Fortinet             234
+ SW-MAL-CORE-01     Juniper              367 days
+ SW-MAL-ACC-01      Juniper               45 days
+ SW-MAL-ACC-02      Juniper                8 days
+ RT-MAL-01          Mikrotik             178 days
+ AP-MAL-01          Aruba                 90 days
+ AP-MAL-02          Aruba                 90 days
+ FW-MAL-01          Fortinet             234 days
 
 Datacenter
- SW-DC-CORE-01       Cisco                789
- SW-DC-CORE-02       Cisco                789
- SW-DC-TOR-01        Arista               234
- SW-DC-TOR-02        Arista                 5
- SW-DC-TOR-03        Arista               156
- RT-DC-EDGE-01       Juniper              567
- FW-DC-01            Checkpoint           445
- FW-DC-02            Checkpoint           445
- LB-DC-01            F5                   234
- LB-DC-02            F5                   234
+ SW-DC-CORE-01      Cisco                789 days
+ SW-DC-CORE-02      Cisco                789 days
+ SW-DC-TOR-01       Arista               234 days
+ SW-DC-TOR-02       Arista                 5 days
+ SW-DC-TOR-03       Arista               156 days
+ RT-DC-EDGE-01      Juniper              567 days
+ FW-DC-01           Checkpoint           445 days
+ FW-DC-02           Checkpoint           445 days
+ LB-DC-01           F5                   234 days
+ LB-DC-02           F5                   234 days
 
 Säkerhetskopia
- SW-DR-01            Dell                 890
- RT-DR-01            Cisco                890
- FW-DR-01            Sophos               345
+ SW-DR-01           Dell                 890 days
+ RT-DR-01           Cisco                890 days
+ FW-DR-01           Sophos               345 days
